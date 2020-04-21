@@ -2,16 +2,16 @@ var textarea_subject_id = "message_subject";
 var textarea_content_id = "message_content";
 
 var date = new Date();
-var daily_report_report_subject_template  = formatDate(date, "yyyy年nn月jj日");
+var daily_report_subject_template  = formatDate(date, "yyyy年nn月jj日");
 var daily_report_content_template  = "this is daily report content template.";
 var weekly_report_subject_template = "～" + formatDate(date, "yyyymmdd");
 var weekly_report_content_template = "this is weekly report content template.";
 
 chrome.runtime.onMessage.addListener(function(msg) {
     var button_text = msg.text;
-    if (msg.text == "daily_report") {
+    if (msg.text == "daily") {
         write_daily_report();
-    } else if (msg.text == "weekly_report") {
+    } else if (msg.text == "weekly") {
         write_weekly_report();
     }
 });
@@ -19,13 +19,17 @@ chrome.runtime.onMessage.addListener(function(msg) {
 function write_daily_report() {
     $("#" + textarea_subject_id).val(daily_report_subject_template);
     $("#" + textarea_content_id).val(daily_report_content_template);
-    $("#" + textarea_content_id).focus();
+    // TODO: focus content textarea
+    // $("#" + textarea_content_id).focus();
+    // document.getElementById(textarea_content_id).focus();
 }
 
 function write_weekly_report() {
     $("#" + textarea_subject_id).val(weekly_report_subject_template);
     $("#" + textarea_content_id).val(weekly_report_content_template);
-    $("#" + textarea_content_id).focus();
+    // TODO: focus content textarea
+    // $("#" + textarea_content_id).focus();
+    // document.getElementById(textarea_content_id).focus();
 }
 
 function formatDate (date, format) {
