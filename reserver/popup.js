@@ -1,4 +1,24 @@
-$("#open").on('click', function() {
+$("#open").on("click", () => {
+    var url = makeUrl();
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+        chrome.tabs.update(tabs[0].id, {
+            url: url
+        });
+    });
+});
+
+$("#load").on("click", () => {
+    $.getJSON("./preset.json", function(preset) { 
+        $('input[name="date"]').val(preset.date);
+        $('input[name="id"]').val(preset.id);
+        $('input[name="starttime"]').val(preset.starttime);
+        $('input[name="endtime"]').val(preset.endtime);
+    });
+});
+
+function makeUrl() {
+    var url_base = "https://trial.desknets.com/cgi-bin/dneo/dneo.cgi?cmd=plantweekgrp#cmd=plantadd";
+
     var raw_date    = $('input[name="date"]').val();
     var date        = formatDate(new Date(raw_date), "yyyymmdd");
     var date_msg    = "";
@@ -26,11 +46,10 @@ $("#open").on('click', function() {
         endtime_msg = "&endtime=" + endtime; 
     }
 
-    var url_base = "https://trial.desknets.com/cgi-bin/dneo/dneo.cgi?cmd=plantweekgrp#cmd=plantadd";
     var url = url_base + date_msg + enddate_msg + id_msg + starttime_msg + endtime_msg;
 
-    document.location.href = url;
-});
+    return url;
+};
 
 function formatDate(date, format) {
     format = format.replace(/yyyy/g, date.getFullYear());

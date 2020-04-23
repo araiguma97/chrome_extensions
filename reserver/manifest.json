@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "Meeting Reserver",
+    "version": "1.0",
+    "description": "a extention for reserve meeting",
+    "icons": {
+        "16": "sapphire.png",
+        "48": "sapphire.png",
+        "128": "sapphire.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "sapphire.png"
+        },
+        "default_title": "Meeting Reserver",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "js": ["jquery-3.5.0.min.js"],
+            "matches": ["http://*/*", "https://*/*"]
+        }
+    ]
+}
