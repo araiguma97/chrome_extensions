@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8"/>
         <style>
-            body { width: 256px; text-align: center;}
-            button { margin: 10px; }
+            body { width: 256px;}
+            table {margin: auto;}
+            .right {text-align: right;}
         </style>
         <script src="jquery-3.5.0.min.js"></script>
     </head>
@@ -15,8 +16,10 @@
             <tr><td>Start time</td><td><input type="number" name="starttime"/></td></tr>
             <tr><td>End time</td><td><input type="number" name="endtime"/></td></tr>
             <tr>
-                <td><input type="button" id="load" value="Load"></td>
-                <td><input type="button" id="open" value="Open"/></td>
+                <td colspan="3" class="right">
+                    <input type="button" id="load" value="Load">
+                    <input type="button" id="open" value="Open"/>
+                </td>
             </tr>
         </table>
         <script src="popup.js"></script>
